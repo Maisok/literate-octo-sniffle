@@ -1,0 +1,4 @@
+
+compsoer instaall --ignore-platform-reqs
+npm install -D tailwindcss postcss autoprefixer
+  -D 

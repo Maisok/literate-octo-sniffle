@@ -1,0 +1,45 @@
+version: '3.8'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: where-parts-app
+    container_name: where-parts-app
+    ports:
+      - "80:80"
+    volumes:
+      - .:/var/www/html
+    depends_on:
+      - db
+    networks:
+      - app-network
+
+  db:
+    image: mysql:8
+    container_name: where-parts-db
+    environment:
+      MYSQL_ROOT_PASSWORD: wT8gn!RpC2p/z.M5
+      MYSQL_DATABASE: where_parts_db
+    volumes:
+      - db_data:/var/lib/mysql
+    networks:
+      - app-network
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin  # Исправлено: убран лишний пробел
+    container_name: where-parts-phpmyadmin
+    ports:
+      - "8080:80"
+    environment:
+      PMA_HOST: db
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
+
+volumes:
+  db_data:
