@@ -210,7 +210,7 @@
         <button type="submit" class="btn btn-primary bg-blue-500 text-white px-4 py-2 rounded-md">Импортировать товары</button>
     </form>
 </div>
-<div class="container mx-auto p-4 mt-20">
+<div class="container mx-auto p-4 mt-20 mb-20">
 <h2 class="text-xl font-bold mb-4">Прямой импорт товаров из прайс-листа</h2>
 
 @if ($errors->any())
@@ -243,7 +243,7 @@
     </div>
 </form>
 </div>
-</div>
+
 
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>

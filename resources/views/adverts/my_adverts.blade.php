@@ -5,7 +5,7 @@
 <script src="{{ asset('js/my_adverts.js') }}" defer></script>
 @include('components.header-seller')
 
-<div class="container mx-auto p-4 bg-white rounded shadow-md overflow-x-auto mt-20">
+<div class="container mx-auto p-4 bg-white rounded shadow-md overflow-x-auto mt-20  mb-20">
     <!-- Форма поиска -->
     <form method="GET" action="{{ route('adverts.my_adverts') }}" class="search-form flex flex-wrap items-center mb-4">
         <input type="text" name="search" class="searchInput p-2 border rounded-md mr-2 mb-2 w-full md:w-1/2" placeholder="Поиск по наименованию или номеру" value="{{ request()->input('search') }}">

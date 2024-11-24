@@ -1,3 +1,11 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Все товары</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
 @include('components.header-seller')   
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/js-cookie/3.0.1/js.cookie.min.js"></script>
@@ -8,15 +16,15 @@
 <h3 class="text-2xl font-bold mt-8 mb-4 text-center">Результаты поиска:</h3>
 
 <!-- Фильтры по параметру engine для мобильных устройств -->
-<div class="filters bg-white p-4 rounded-lg shadow-md w-full md:hidden">
-    <h4 class="text-xl font-semibold mb-4">Фильтры по двигателю:</h4>
+<div class="filters bg-white p-3 rounded-lg shadow-md w-full 2xl:hidden">
+    <h4 class="text-lg font-semibold mb-3">Фильтры по двигателю:</h4>
     <form method="GET" action="{{ route('adverts.search') }}"> <!-- Укажите правильный маршрут для обработки формы -->
         @foreach($engines as $engine)
-            <div>
+            <div class="mb-2">
                 <input type="checkbox" name="engines[]" value="{{ $engine }}" id="engine-{{ $engine }}"
                     {{ in_array($engine, request('engines', [])) || !request()->has('engines') ? 'checked' : '' }}
-                    class="mr-2">
-                <label for="engine-{{ $engine }}" class="text-lg">{{ !empty($engine) ? ucfirst($engine) : 'Не указан' }}</label>
+                    class="mr-2 w-5 h-5">
+                <label for="engine-{{ $engine }}" class="text-base">{{ !empty($engine) ? ucfirst($engine) : 'Не указан' }}</label>
             </div>
         @endforeach
 
@@ -26,12 +34,11 @@
         <input type="hidden" name="model" value="{{ request('model') }}">
         <input type="hidden" name="year" value="{{ request('year') }}">
 
-        <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded-lg mt-4">Применить фильтры</button>
+        <button type="submit" class="bg-blue-500 text-white text-base px-4 py-2 rounded-lg mt-3">Применить фильтры</button>
     </form>
 </div>
-
 <!-- Фильтры по параметру engine -->
-<div class="filters bg-white p-4 rounded-lg shadow-md w-80 absolute right-0 mt-4 mr-32 hidden md:block">
+<div class="filters bg-white p-4 rounded-lg shadow-md w-80 absolute right-0 mt-4 mr-32 hidden 2xl:block">
     <h4 class="text-xl font-semibold mb-4">Фильтры по двигателю:</h4>
     <form method="GET" action="{{ route('adverts.search') }}"> <!-- Укажите правильный маршрут для обработки формы -->
         @foreach($engines as $engine)
@@ -178,3 +185,5 @@
         });
     });
 </script>
+</body>
+</html>
